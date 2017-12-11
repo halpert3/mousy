@@ -2,6 +2,7 @@ class SqueaksController < ApplicationController
   before_action :authenticate_user!
   
   def index
+    @squeaks = Squeak.all
   end
 
   def new #just puts up the form
