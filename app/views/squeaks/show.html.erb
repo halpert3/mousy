@@ -1,2 +1,12 @@
-<h1>Squeaks#show</h1>
-<p>Find me in app/views/squeaks/show.html.erb</p>
+<p>
+    <strong>Message: </strong> <%= @squeak.message %>
+    
+</p>
+
+<p>
+    <strong>User: </strong> <%= @squeak.user.username %>
+    
+</p>
+
+<%= link_to 'Edit', edit_squeak_path(@squeak), class: 'btn btn-secondary' %>
+<%= link_to 'Squeak History', squeak_path, class: 'btn btn-primary' %>

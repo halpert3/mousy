@@ -1,0 +1,31 @@
+<%= form_for(@squeak) do |f| %>
+<!-- Check for errors -->
+    <% if @squeak.errors.any?  %>
+        <div id="error_explanation">
+            <h2>
+                <%= pluralize(@squeak.errors.count, 'error') %> stopped this squeak from being saved.
+            </h2>
+            <ul>
+                <%= @squeak.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+            </ul>
+            
+        </div>
+    <% end %>
+
+<!-- The Actual Form-->
+    <div class="field form-group">
+        <%= f.label :message %><br>
+        <%= f.text_field :message, class: "form-control" %>
+    </div>
+    
+    <div class="field form-group">
+        <%= f.hidden_field :user_id, value: current_user.id, class: "form-control" %>
+    </div>
+    
+    <div class="actions form-group">
+        <%= f.submit class: "btn btn-info" %>
+    </div>
+    
+<% end %>
