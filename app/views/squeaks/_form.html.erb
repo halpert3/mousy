@@ -6,7 +6,7 @@
                 <%= pluralize(@squeak.errors.count, 'error') %> stopped this squeak from being saved.
             </h2>
             <ul>
-                <%= @squeak.errors.full_messages.each do |message| %>
+                <% @squeak.errors.full_messages.each do |message| %>
                     <li><%= message %></li>
                 <% end %>
             </ul>
