@@ -1,5 +1,7 @@
 class SqueaksController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_squeak, only: [:edit, :update, :show, :destroy]
+  
   
   def index
     @squeaks = Squeak.all
@@ -23,14 +25,26 @@ class SqueaksController < ApplicationController
   def edit
   end
 
+  def update
+    if @squeak.update(squeak_params)
+      redirect_to @squeak, notice: 'You updated your squeak successfully.'
+    else
+      flash.now[:alert] = 'Something messed up. Try again.'
+      render :edit
+    end
+  end
+
   def show
-    @squeak = Squeak.find(params[:id])
   end
   
   private
   
   def squeak_params
     params.require(:squeak).permit(:message, :user_id)
+  end
+  
+  def set_squeak
+    @squeak = Squeak.find(params[:id])
   end
 
 end

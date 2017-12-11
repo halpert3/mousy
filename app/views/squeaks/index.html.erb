@@ -1,39 +1,37 @@
-<div class="container-fluid">
+<div class="container">
     <div class="row">
         <div class="col">
-            <div class="text-center">
-                <h1>All the Squeaks</h1>
-                <%= link_to 'New Squeak', new_squeak_path, class: "btn btn-primary mb-3" %>
-                <table class="table table-striped table-hover table-bordered" >
-                    <thead class="thead-dark">
-                        <th>Squeak</th>
-                        <th>User</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        
-                    </thead>
-                    <tbody>
-                        <% @squeaks.each do |squeak|  %>
-                            <tr>
-                                <td><%= squeak.message %></td>
-                                <td><%= squeak.user.try(:username) %></td>
-                                <td><%= link_to fa_icon('eye', text: 'Show'),
-                                    squeak,
-                                    class: "btn btn-sm" %></td>
-                                <td><%= link_to fa_icon('pencil', text: 'Edit'),
-                                    edit_squeak_path(squeak),
-                                    class: "btn btn-sm" %></td>
-                                <td><%= link_to fa_icon('trash-o', text: 'Destroy'),
-                                    squeak,
-                                    method: :delete,
-                                    data:{confirm: 'Are you sure'},
-                                    class: "btn btn-sm" %></td>
-                            </tr>
-                        <% end %>
-                    </tbody>
-                </table>
-            </div>
+            <h1 class="text-center">All the Squeaks</h1>
+            <%= link_to 'New Squeak', new_squeak_path, class: "btn btn-primary mb-3" %>
+            <table class="table table-striped table-hover table-bordered" >
+                <thead class="text-center thead-dark">
+                    <th>Squeak</th>
+                    <th>User</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    
+                </thead>
+                <tbody>
+                    <% @squeaks.each do |squeak|  %>
+                        <tr>
+                            <td><%= squeak.message %></td>
+                            <td><%= squeak.user.try(:username) %></td>
+                            <td><%= link_to fa_icon('eye', text: 'Show'),
+                                squeak,
+                                class: "btn btn-sm" %></td>
+                            <td><%= link_to fa_icon('pencil', text: 'Edit'),
+                                edit_squeak_path(squeak),
+                                class: "btn btn-sm" %></td>
+                            <td><%= link_to fa_icon('trash-o', text: 'Destroy'),
+                                squeak,
+                                method: :delete,
+                                data:{confirm: 'Are you sure'},
+                                class: "btn btn-sm" %></td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
