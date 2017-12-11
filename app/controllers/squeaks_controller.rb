@@ -37,6 +37,14 @@ class SqueaksController < ApplicationController
   def show
   end
   
+  def destroy
+    if @squeak.destroy
+      redirect_to squeaks_path, notice: "Squeak deleted."
+    else
+      flash.now[:alert] = 'Something messed up. Try again.'
+    end
+  end
+  
   private
   
   def squeak_params
