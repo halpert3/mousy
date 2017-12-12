@@ -1,0 +1,16 @@
+<% if current_user.likes?(@squeak) %>
+    <%= link_to 'Unlike', squeak_likes_path(@squeak), method: :delete %>    
+<% else %>
+    <%= link_to 'Like', squeak_likes_path(@squeak), method: :post %>
+<% end %>
+
+<%= pluralize(@squeak.likes.count, 'Like') %>
+<br>
+
+Liked by:
+
+<% @squeak.likes.each do |like| %>
+    <br>
+    <%= like.user.username %>
+    <br>
+<% end %>

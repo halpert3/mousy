@@ -15,6 +15,10 @@ class User < ApplicationRecord
   has_many :likes
   
   validates :username, presence: true, uniqueness: true
+  
+  def likes?(squeak)
+    squeak.likes.where(user_id: id).any?
+  end
 end
 
 

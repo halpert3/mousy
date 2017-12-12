@@ -1,3 +1,9 @@
+class Like < ApplicationRecord
+    belongs_to :user
+    belongs_to :squeak
+end
+
+
 # == Schema Information
 #
 # Table name: likes
@@ -9,5 +15,3 @@
 #  updated_at :datetime         not null
 #
 
-class Like < ApplicationRecord
-end
