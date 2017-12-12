@@ -1,5 +1,5 @@
 <p>
-    <strong>Message: </strong> <%= @squeak.message %>
+    <strong>Message: </strong> <%= @squeak.message.order(created_at: :desc) %>
     
 </p>
 

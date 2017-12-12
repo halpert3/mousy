@@ -1,38 +1,43 @@
 <div class="container">
-    <div class="row">
-        <div class="col">
-            <h1 class="text-center">All the Squeaks</h1>
+    <div class="row text-center">
+        <div class="col-md-4">
+            <%= image_tag("MousyLogo.png")  %>
+        </div>
+         <div class="col-md-4 d-flex-column align-self-center p-2">
+            <h1>ALL THE SQUEAKS</h1>
+            <br><br>
             <%= link_to 'New Squeak', new_squeak_path, class: "btn btn-primary mb-3" %>
-            <table class="table table-striped table-hover table-bordered" >
-                <thead class="text-center thead-dark">
-                    <th>Squeak</th>
-                    <th>User</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    
-                </thead>
-                <tbody>
-                    <% @squeaks.each do |squeak|  %>
-                        <tr>
-                            <td><%= squeak.message %></td>
-                            <td><%= squeak.user.try(:username) %></td>
-                            <td><%= link_to fa_icon('eye', text: 'Show'),
+        </div>
+         <div class="col-md-4">
+             <%= image_tag("blank.png")  %>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <% @squeaks.order(created_at: :desc).each do |squeak|  %>
+                <div class="card" style="margin-bottom: 1rem">
+                    <div class="card-block" style="padding: 1rem; background-color: papayawhip;">
+                        <p style="font-weight: bold"><%= squeak.message %></p>
+                       
+                        <%= squeak.user.try(:username) %>
+                        <div class="pull-right">
+                        <%= link_to fa_icon('eye', text: 'Show'),
                                 squeak,
-                                class: "btn btn-sm" %></td>
-                            <td><%= link_to fa_icon('pencil', text: 'Edit'),
+                                class: "btn btn-sm" %>
+                        <%= link_to fa_icon('pencil', text: 'Edit'),
                                 edit_squeak_path(squeak),
-                                class: "btn btn-sm" %></td>
-                            <td><%= link_to fa_icon('trash-o', text: 'Destroy'),
+                                class: "btn btn-sm" %>
+                        <%= link_to fa_icon('trash-o', text: 'Destroy'),
                                 squeak,
                                 method: :delete,
                                 data:{confirm: 'Are you sure you want to delete this squeak?'},
-                                class: "btn btn-sm" %></td>
-                        </tr>
-                    <% end %>
-                </tbody>
-            </table>
-        </div>
+                                class: "btn btn-sm" %></p>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        <div class="col-md-3"></div>
     </div>
 </div>
 
